@@ -48,6 +48,24 @@ CANCELLIAMO TUTTE LE qdiscs PRESENTI NEL DEVIDE eth0:
 tc qdisc del dev eth0 root;
 
 
+Le code di qdisc possono essere di due tipologie: Classfull e Classless
+
+° Classless : Sono code che possono svolgere operazioni basilari su di un flusso di dati.Come: ordinare,rallentare o 
+droppare pacchetti.
+
+° Classfull : Sono code dotate di "classi". Quindi , se abbiamo la necessità di trattare in modo differente il traffico
+generato da una rete , rispetto a quello generato da una altra , allora dobbiamo usare le qdisc Classfull!
+(nostro caso)
+
+
+tc qdisc add dev eth0 root handle 1: htb default 24;
+
+Questa linea di codice setta una Hierarchical Token Bucket (HTB)
+L'HTB è molto utile quando abbiamo intenzione di dividere la nostra banda.
+Possiamo dividere la banda e dare ad ogni segmento cosi creato , una porzione di banda.
+Il codice di sopra , quindi, genera una HTB nel root di eth0 e specfica che la classe 1:24
+cioè , la classe 24 figlia di root (classe 1) è usata di default
+
 
 
  
