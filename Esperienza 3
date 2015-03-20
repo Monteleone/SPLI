@@ -130,7 +130,17 @@ Using tc + iptables
 iptables ha un metodo chiamato fwmark , che viene usato per aggiungere un marchio ai pacchetti.Il mark
 riesce a sopravvivere nel routing tra le interfaccce
 Per prima cosa, diciamo che la coda 1:11 processa i pacchetti con mark pari a 11
-Poi, possiamo usare iptables per trovare i pacchetti con un certo mark 
-First, this makes packages marked with 6, to be processed by the 1:30 class 
+Poi, possiamo usare iptables attribuire questo mark:
 
-You can then use the regular way of iptables to match packages and then use fwmark to mark them. 
+
+iptables -A PREROUTING -t mangle -i ${IN_IFACE} -s ${super_client} -p tcp --dport 80 -j MARK --set-mark 11;
+
+
+iptables -A PREROUTING -t mangle -i ${IN_IFACE} -s ${super_client} -j MARK --set-mark 12;
+iptables -A PREROUTING -t mangle -i ${IN_IFACE} -s ${super_client} -j RETURN;
+
+The RETURN target will cause the current packet to stop traveling through the chain where 
+it hit the rule. If it is the subchain of another chain, the packet will continue to travel
+through the superior chains as if nothing had happened. If the chain is the main chain, 
+for example the INPUT chain, the packet will have the default policy taken on it. The default
+policy is normally set to ACCEPT, DROP or similar. 
