@@ -77,7 +77,17 @@ Anche questa classe usa un HTB per suddividere la sua banda. Setta il max rate a
 (burst: quantitativo di banda in eccesso che può essere utilizzato per un periodo limitato di tempo.)
 L'argomento ceil specifica la massima banda possibile per la classe che abbiamo appena definito.
 
-
+Creo una altra classe.
 tc class add dev eth0 parent 1: classid 1:30 htb rate 1mbps ceil 1.5mbps burst 1mb;
 
- Creo una altra classe.
+
+tc qdisc add dev eth0 parent 1:11 handle 11: netem delay 100ms 20ms distribution normal loss 5% duplicate 0.1% corrupt 0.5% reorder 5% 15% gap 5;
+
+° Semplicemente aggiunge un certo delay 100ms ± 10ms  a tutti i pacchetti che escono da eth0. 
+Tipicamente il dalay non è uniferme e quindi è bene usare una distribuzione per descrivere la variazione del dalay.
+° loss: aggiunge una percentuale di perdita nel pacchetto
+° duplicate
+° corrupt: This introduces a single bit error at a random offset in the packet
+° reorder:  It causes a certain percentage of the packets to get mis-ordered.
+            In this example, 5% of packets (with a correlation of 15%) will get sent immediately, others will be delayed by 100ms ± 10ms.
+° gap 5: The method gap uses a fixed sequence and reorders every Nth packet.
