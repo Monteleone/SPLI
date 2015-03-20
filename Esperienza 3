@@ -103,5 +103,9 @@ Tipicamente il dalay non è uniferme e quindi è bene usare una distribuzione pe
 
 Inoltre, con le HTB è possibile creare dei filtri da abbinare al root:
 
+Quando abbiamo creato una qdisc , questa possiede necessariamente un root (che contiene diverse classi)
+E' necessario dire al root , quali di queste classi debba essere un grado di processare determinati pacchetti e chi no.
+Nelle code qdisc di tipo Classless non è necessario applicare i filtri.
+I filtri possono essere applicati usando tc , o una combinazione di tc+iptables
 
 
