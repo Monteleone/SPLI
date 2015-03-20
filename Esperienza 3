@@ -74,10 +74,10 @@ tc class add dev eth0 parent 1: classid 1:1 htb rate 2mbps ceil 3mbps burst 1mb;
 
 Crea una classe chiamata 1:1 ,diretto discendente di 1 (ovvero di root).
 Anche questa classe usa un HTB per suddividere la sua banda. Setta il max rate a 2mbits, con un burst di 1 mb
-
 (burst: quantitativo di banda in eccesso che può essere utilizzato per un periodo limitato di tempo.)
+L'argomento ceil specifica la massima banda possibile per la classe che abbiamo appena definito.
 
 
+tc class add dev eth0 parent 1: classid 1:30 htb rate 1mbps ceil 1.5mbps burst 1mb;
 
-
- 
+ Creo una altra classe.
