@@ -15,7 +15,39 @@ in grado di configurare lo scheduler di rete del kernel linux
  Il controllo del traffico si basa su una singola coda FIFO che colleziona i pacchetti , determinando quali di questi 
  debba essere gestito ,e quali no.
  
+ ______________________________________________
+ Supponendo di trovarci nel GATEWAY (ROUTER)
+ ______________________________________________
  
+ Come sempre ,settiamo nel gw due interfacce di rete (Creiamo due sottoreti)
+ Attiviamo il forwarding 
+ echo "1" > /proc/sys/net/ipv4/ip_forward;
+ oppure
+ sysctl -w net.ipv4.ip_forward=1;
+
+ Sappiamo che il TCP ha uno start piuttosto lento (handshaking); Dopo avere instaurato la comunicazione
+ ,pero', diventa sempre piu' performante. E' possibile controllare quanto traffico è ricevuto su una rete LAN
+ facendo droppare i pacchetti che passano per il gw , prima ancora che questi vengano forwardati.
  
- 
+ Ogni network device ha un root dove puo' essere settato un qdisc.
+
+**********************************************************************************************************
+qdisc è uno scheduler. Gli schedulers possono essere di tipo FIFO o piu' complessi. Possono , per esempio,
+contenere classi e altre qdiscs
+**********************************************************************************************************
+Di default , il root ha una fifo_fast_qdisc
+
+fifo_fast è il qdisc di default .Nei device di rete che non hanno subito modifiche, fifo_fast è settato sul root
+il primo pacchetto che entra , è il primo pacchetto che esce.Detto in altre parole: NON CI SONO FAVORITISMI TRA I
+PACCHETTI.
+
+Basandoci su queste informazioni , la prima cosa da svolgere è di cancellare i qdisc presenti in root
+CANCELLIAMO TUTTE LE qdiscs PRESENTI NEL DEVIDE eth0:
+
+
+tc qdisc del dev eth0 root;
+
+
+
+
  
