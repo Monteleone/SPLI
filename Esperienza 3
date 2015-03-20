@@ -66,6 +66,14 @@ Possiamo dividere la banda e dare ad ogni segmento cosi creato , una porzione di
 Il codice di sopra , quindi, genera una HTB nel root di eth0 e specfica che la classe 1:24
 cioè , la classe 24 figlia di root (classe 1) è usata di default
 
+tc class add dev eth0 parent 1: classid 1:1 htb rate 2mbps ceil 3mbps burst 1mb;
+
+Crea una classe chiamata 1:1 ,diretto discendente di 1 (ovvero di root).
+Anche questa classe usa un HTB per suddividere la sua banda. Setta il max rate a 2mbits, con un burst di 1 mb
+
+(burst: quantitativo di banda in eccesso che può essere utilizzato per un periodo limitato di tempo.)
+
+
 
 
  
