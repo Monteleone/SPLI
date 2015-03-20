@@ -54,6 +54,16 @@ tc qdisc del dev eth0 root;
 
 Le code di qdisc possono essere di due tipologie: Classfull e Classless
 
+                    root 1:
+                      |
+                    _1:1_
+                   /  |  \
+                  /   |   \
+                 /    |    \
+               1:10:  ..   ...
+              /   \       /   \
+           1:11  11:12   
+
 ° Classless : Sono code che possono svolgere operazioni basilari su di un flusso di dati.Come: ordinare,rallentare o 
 droppare pacchetti.
 
@@ -100,6 +110,7 @@ Tipicamente il dalay non è uniferme e quindi è bene usare una distribuzione pe
  ______________________________________________
  HTB FILTERS
  ______________________________________________
+ 
 
 Inoltre, con le HTB è possibile creare dei filtri da abbinare al root:
 
@@ -109,3 +120,17 @@ Nelle code qdisc di tipo Classless non è necessario applicare i filtri.
 I filtri possono essere applicati usando tc , o una combinazione di tc+iptables
 
 
+tc filter add dev eth0 parent 1: prio 0 protocol ip handle 11 fw flowid 1:11;
+
+In questo codice usiamo tc+iptables
+Vediamo in dettaglio:
+
+Using tc + iptables
+
+iptables ha un metodo chiamato fwmark , che viene usato per aggiungere un marchio ai pacchetti.Il mark
+riesce a sopravvivere nel routing tra le interfaccce
+Per prima cosa, diciamo che la coda 1:11 processa i pacchetti con mark pari a 11
+Poi, possiamo usare iptables per trovare i pacchetti con un certo mark 
+First, this makes packages marked with 6, to be processed by the 1:30 class 
+
+You can then use the regular way of iptables to match packages and then use fwmark to mark them. 
