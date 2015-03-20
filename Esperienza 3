@@ -1,3 +1,21 @@
 
 
 In pratica dobbiamo creare una rete , nella quale eseguire delle policy di QoS
+
+********************************************************************
+Ps: Il termine QoS è spesso usato come sinonimo di Traffic Controll
+********************************************************************
+
+Una della features piu' importanti del kernel linux è la possibilità di controllare e modellare il traffico di rete
+
+Traffic controll (tc) è il nome che viene dato a un sistema di code e di meccanismi , in grado di gestire
+il traffico di rete che passa per un router. tc (traffic control) è un comando linux ( facente parte di iproute2) 
+in grado di configurare lo scheduler di rete del kernel linux 
+
+ Il controllo del traffico si basa su una singola coda FIFO che colleziona i pacchetti , determinando quali di questi 
+ debba essere gestito ,e quali no.
+ 
+ 
+ 
+ 
+ 
