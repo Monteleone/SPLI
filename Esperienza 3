@@ -161,8 +161,25 @@ Per prima cosa viene creata una coda HTB di questo tipo:
                 /     |     |    \
                1:10  1:11 1:12   1:13
         
-In seguito
+In seguito diamo al protocollo ip le seguenti regole:
+
+sudo tc filter add dev wlan0 parent 1:0 prio 0 protocol ip handle 10 fw flowid 1:10;
+sudo tc filter add dev wlan0 parent 1:0 prio 1 protocol ip handle 11 fw flowid 1:11;
+sudo tc filter add dev wlan0 parent 1:0 prio 2 protocol ip handle 12 fw flowid 1:12;
+
+
 prio: The priority of this classifier. Lower numbers get tested first.
+The protocol field describes protocol that the filter will be applied to.
+We will only discuss case of ip protocol. The preference field (priority can be used alternatively) 
+sets the priority of currently defined filter. This is important, since you can have several filters 
+(lists of rules) with different priorities. Each list will be passed in the order the rules were added, 
+then list with lower priority (higher preference number) will be processed.
+
+
+
+
+
+
 
 
 Utility:
