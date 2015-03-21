@@ -149,10 +149,15 @@ policy is normally set to ACCEPT, DROP or similar.
 
 
  ______________________________________________
- Supponendo di trovarci nel Server
+ Mandare pacchetti TCP tramite hping3
  ______________________________________________
 
+apt-get install hping3
+sudo hping3 -S james -c 2 -p 80
 
+°james: nome del destinatario
+°-c : count, ovvero numero di pacchetti da inviare
+°-p : porta di destinazione
 
 
 
