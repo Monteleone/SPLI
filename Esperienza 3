@@ -183,7 +183,17 @@ sets the priority of currently defined filter. This is important, since you can 
 then list with lower priority (higher preference number) will be processed.
 
 
+Dopo diciamo che i pacchetti tcp , icmp, udp , in uscita dal server sono marcati come :
 
+sudo iptables -t mangle -F;
+sudo iptables -A OUTPUT -t mangle -p tcp --sport 80 -j MARK --set-mark 10;
+sudo iptables -A OUTPUT -t mangle -p icmp -j MARK --set-mark 11;
+sudo iptables -A OUTPUT -t mangle -p udp  -j MARK --set-mark 12;
+
+
+10 quelli tcp
+11 quelli icmp
+12 quelli udp
 
 
 
