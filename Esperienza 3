@@ -199,6 +199,24 @@ Quindi , per fare una breve sintesi , abbiamo detto al server che deve gestire p
 i pacchetti uscenti tcp (priorità 0), dopo gli uscenti icmp (priorità 1) e infine quelli uscenti udp (priorità 2)
 
 
+*************************************************
+Conclusioni di tutto sto discorso:
+*************************************************
+
+Il succo è questo:
+Abbiamo dei client , un server che risponde a delle richieste (ma và!) e un bel gateway che ha il compito di 
+fare parlare i client residenti su sottoreti differenti.
+Nel gateway andiamo ad impostare le politiche di traffic control , in modo che in base al client (abbiamo diverse
+tipologie di client) marchiamo i pacchetti in un certo modo.
+Quando un client fa una richiesta al server , passando per il gateway , ottiene un mark nei suoi pacchetti
+in base a quale user category appartiene.
+Infatti nel gateway abbiamo i comandi di iptables che nel PREROUTING attribuiscono il mark a questi pacchetti.
+
+Una volta arrivati nel server , questi pacchetti vengono smistati nella HTB del server
+
+
+
+
 
 
 Utility:
