@@ -195,6 +195,8 @@ sudo iptables -A OUTPUT -t mangle -p udp  -j MARK --set-mark 12;
 11 quelli icmp
 12 quelli udp
 
+Quindi , per fare una breve sintesi , abbiamo detto al server che deve gestire per prima 
+i pacchetti uscenti tcp (priorità 0), dopo gli uscenti icmp (priorità 1) e infine quelli uscenti udp (priorità 2)
 
 
 
