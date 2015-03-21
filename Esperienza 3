@@ -144,3 +144,23 @@ it hit the rule. If it is the subchain of another chain, the packet will continu
 through the superior chains as if nothing had happened. If the chain is the main chain, 
 for example the INPUT chain, the packet will have the default policy taken on it. The default
 policy is normally set to ACCEPT, DROP or similar. 
+
+
+
+ ______________________________________________
+ Supponendo di trovarci nel Server
+ ______________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
