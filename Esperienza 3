@@ -87,6 +87,9 @@ Crea una classe chiamata 1:1 ,diretto discendente di 1 (ovvero di root).
 Anche questa classe usa un HTB per suddividere la sua banda. Setta il max rate a 2mbits, con un burst di 1 mb
 (burst: quantitativo di banda in eccesso che può essere utilizzato per un periodo limitato di tempo.)
 L'argomento ceil specifica la massima banda possibile per la classe che abbiamo appena definito.
+Rate: Banda Garantita
+Ceil: Banda Massima
+
 
 Creo una altra classe.
 tc class add dev eth0 parent 1: classid 1:30 htb rate 1mbps ceil 1.5mbps burst 1mb;
@@ -170,6 +173,7 @@ sudo tc filter add dev wlan0 parent 1:0 prio 0 protocol ip handle 10 fw flowid 1
 sudo tc filter add dev wlan0 parent 1:0 prio 1 protocol ip handle 11 fw flowid 1:11;
 sudo tc filter add dev wlan0 parent 1:0 prio 2 protocol ip handle 12 fw flowid 1:12;
 
+Cioè diciamo quale code deve gestire i pacchetti marchiati 10,11 e 12
 
 prio: The priority of this classifier. Lower numbers get tested first.
 The protocol field describes protocol that the filter will be applied to.
@@ -178,7 +182,7 @@ sets the priority of currently defined filter. This is important, since you can 
 (lists of rules) with different priorities. Each list will be passed in the order the rules were added, 
 then list with lower priority (higher preference number) will be processed.
 
-Cioè stiamo dicendo che 
+
 
 
 
