@@ -147,7 +147,25 @@ for example the INPUT chain, the packet will have the default policy taken on it
 policy is normally set to ACCEPT, DROP or similar. 
 
 
+ ______________________________________________
+ Supponendo di trovarci nel SERVER
+ ______________________________________________
 
+Per prima cosa viene creata una coda HTB di questo tipo:
+
+                     root 1:
+                        |
+                   ____1:1_____            
+                  /   |     |  \
+                 /    |     |   \
+                /     |     |    \
+               1:10  1:11 1:12   1:13
+        
+In seguito
+prio: The priority of this classifier. Lower numbers get tested first.
+
+
+Utility:
  ______________________________________________
  Mandare pacchetti TCP tramite hping3
  ______________________________________________
