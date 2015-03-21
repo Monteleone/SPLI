@@ -36,6 +36,7 @@ in grado di configurare lo scheduler di rete del kernel linux
  Ogni network device ha un root dove puo' essere settato un qdisc.
 
 **********************************************************************************************************
+qdisc is short for 'queueing discipline'
 qdisc è uno scheduler. Gli schedulers possono essere di tipo FIFO o piu' complessi. Possono , per esempio,
 contenere classi e altre qdiscs
 **********************************************************************************************************
