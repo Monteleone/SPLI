@@ -30,3 +30,15 @@ comandi che permettono di configurare il protocollo OSPF secondo le proprie esig
 Esempi di file di configurazione si possono trovare nella cartella
 /etc/quagga/
 
+
+
+http://computechtips.com/578/install-and-configure-quagga-in-ubuntu
+
+
+
+
+
+
+
+
+
