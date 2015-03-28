@@ -20,3 +20,13 @@ Le informazioni ottenute dai vari protocolli sono “raggruppate” da un demone
 ha il compito di comunicare con il kernel del PC
 
 
+Per ottenere i demoni sopra descritti bisogna installare il software Quagga
+Per mandare in esecuzione uno qualsiasi dei demoni relativi ai
+protocolli di routing bisogna scrivere un file di configurazione
+
+I file di configurazione sono file di testo in cui sono riportati dei
+comandi che permettono di configurare il protocollo OSPF secondo le proprie esigenzenze
+
+Esempi di file di configurazione si possono trovare nella cartella
+/etc/quagga/
+
