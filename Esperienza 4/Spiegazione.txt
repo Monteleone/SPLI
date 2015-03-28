@@ -53,4 +53,52 @@ sudo chown quagga.quaggavty /etc/quagga
 
 
 
+CONFIGURAZIONE BGPD
 
+
+In telecomunicazioni e informatica il Border Gateway Protocol (BGP) è un protocollo di routing usato per connettere tra 
+loro più router che appartengono a sistemi autonomi (Autonomous System, AS) distinti e che vengono chiamati router 
+gateway o router di bordo/confine. È quindi un protocollo di routing inter-AS, nonostante possa essere utilizzato anche 
+tra router appartenenti allo stesso AS (nel qual caso è indicato con il nome di iBGP, Interior Border Gateway Protocol), 
+o tra router connessi tramite un ulteriore AS che li separa.
+
+
+
+Prima di tutto dobbiamo configurare il router con BGP 
+lanciamo:
+
+router bgp asn
+
+#router bgp 10
+
+Dove Autonomous System number (asn) è un numero che scegliamo
+Dopo avere settato il router con BGP ,siamo in grado di lanciare i comandi BGP
+
+bgp router-id A.B.C.D
+#bgp router-id 1.1.1.1
+
+Setta l'ID del router bgp
+
+network A.B.C.D/M
+
+Questo comando dice che la rete A.B.C.D/M sarà annunciata a tutti i vicini
+
+neighbor peer next-hop-self
+
+Indica il punto di uscita da un AS
+Dove è che i pacchetti saranno istradati
+
+neighbor peer remote-as asn
+
+Creiamo un nuovo vicino il quale ha un ASN come vicino
+
+
+neighbor 172.16.1.2 remote-as 10
+
+
+Questo comando specifica l' AS number di un vicino.
+Questo numero è usato per determinare se il vicino è un router BGP interno o esterno
+Se l'AS number ha lo stesso As number dell'attuale BGP configurazione , il vicino è un BGP router interno
+Invece , se gli AS numbers sono differenti, il vicino è un BGP router esterno.
+In questo caso , stiamo dicendo al nostro router che l'indirizzo 172.16.1.2 si trova nel nostro
+stesso AS number. Poichè il nostro router sta anche in AS 10
