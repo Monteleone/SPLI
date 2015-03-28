@@ -45,6 +45,12 @@ sudo cp /usr/share/doc/quagga/examples/bgpd.conf.sample /etc/quagga/bgpd.conf
 sudo cp /usr/share/doc/quagga/examples/vtysh.conf.sample /etc/quagga/vtysh.conf
 
 
+#Aggiungere la stringa 
+VTYSH_PAGER=more al file /etc/environment
+sudo gedit /etc/environment
+
+
+
 #cambiare i permessi alla cartella /etc/quagga ed ai suoi file per modificarli più facilmente
 
 sudo chmod 777 /etc/quagga
