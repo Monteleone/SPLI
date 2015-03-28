@@ -31,13 +31,26 @@ Esempi di file di configurazione si possono trovare nella cartella
 /etc/quagga/
 
 
+INSTALLAZIONE QUAGGA
 
-http://computechtips.com/578/install-and-configure-quagga-in-ubuntu
+apt-get install quagga
+
+#copia dei file configurazione *.conf.sample nella cartella etc/quagga
+#METTO I FILE IN ETC PER CONFIGURARLI PER IL MIO PROGETTO
+
+sudo cp /usr/share/doc/quagga/examples/zebra.conf.sample /etc/quagga/zebra.conf
+sudo cp /usr/share/doc/quagga/examples/ospfd.conf.sample /etc/quagga/ospfd.conf
+sudo cp /usr/share/doc/quagga/examples/ripd.conf.sample /etc/quagga/ripd.conf
+sudo cp /usr/share/doc/quagga/examples/bgpd.conf.sample /etc/quagga/bgpd.conf
+sudo cp /usr/share/doc/quagga/examples/vtysh.conf.sample /etc/quagga/vtysh.conf
 
 
+#cambiare i permessi alla cartella /etc/quagga ed ai suoi file per modificarli più facilmente
 
-
-
+sudo chmod 777 /etc/quagga
+sudo chmod a+rw /etc/quagga/*
+sudo chown quagga.quaggavty /etc/quagga/*
+sudo chown quagga.quaggavty /etc/quagga
 
 
 
