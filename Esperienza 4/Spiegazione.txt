@@ -102,3 +102,10 @@ Se l'AS number ha lo stesso As number dell'attuale BGP configurazione , il vicin
 Invece , se gli AS numbers sono differenti, il vicino è un BGP router esterno.
 In questo caso , stiamo dicendo al nostro router che l'indirizzo 172.16.1.2 si trova nel nostro
 stesso AS number. Poichè il nostro router sta anche in AS 10
+
+distance 30 172.16.1.0/24 
+
+Assegnamo un peso al link che collega il nostro attuale router con la rete di indirizzo 172.16.1.0/24
+Assegnamo 30 
+
+
