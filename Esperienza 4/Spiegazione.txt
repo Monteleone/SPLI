@@ -1,24 +1,17 @@
+IN PILLOLE
 
-Una macchina o una rete che facciamo apparire sui ruoter quagga, questa si deve propagare internamente ed esternamente
-Per propagarsi internamente usa il protocollo OSPF , che scambia con i router vicini le proprie tabelle di routing 
-BGP crea un percorso tra i vari autonomous systems. BGP non è difficile basta wikipedia
-Il nostro scopo è configurare BGP , non diventare degli esperti.
-Gli autonomous system.
-
-
+Dobbiamo creare una rete che abbia dei router (piu' di uno) , in ognuno questi installiamo quagga
 Quagga è una suite di programmi per il network routing
 Tra questi abbiamo Open Shortest Path First (OSPF Open Shortest Path Fist è un protocollo di routing di IP per trovare il 
 percorso piu' breve), Routing Information Protocol (RIP) e Border Gateway Protocol (BGP)
-Un sistema con quagga installato si comporta come un router dedicato
-Con quagga la tua macchina scambia informazioni di routing con altri router , utilizzando protocolli di routing
-Quagga utilizza queste informazioni per aggiornare le tabelle di routing del kernel.
-Puoi cambiare dinamicamente la configurazione e puoi vedere le informazioni della tabella di routing dall'interfaccia 
-a terminale di quagga.
 
+Con quagga la tua macchina scambia informazioni di routing con altri router , utilizzando protocolli di routing
+.Quagga utilizza queste informazioni per aggiornare le tabelle di routing del kernel.
+Puoi cambiare dinamicamente la configurazione e puoi vedere le informazioni della tabella di routing dall'interfaccia 
+a terminale di quagga.Un sistema con quagga installato si comporta come un router dedicato
 Quagga è costituito da un insieme di demoni,che implementano i vari protocolli di routing.
 Le informazioni ottenute dai vari protocolli sono “raggruppate” da un demone specifico (Zebra) che
 ha il compito di comunicare con il kernel del PC
-
 
 Per ottenere i demoni sopra descritti bisogna installare il software Quagga
 Per mandare in esecuzione uno qualsiasi dei demoni relativi ai
