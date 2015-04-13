@@ -1,0 +1,20 @@
+!
+! Zebra configuration saved from vty
+!   2015/04/09 08:48:33
+!
+hostname bgpd
+password zebra
+log file /var/log/quagga/quagga.log
+log stdout
+!
+router bgp 100
+ bgp router-id 3.3.3.1
+ network 192.168.1.0/24
+ redistribute connected
+ neighbor 1.1.1.2 remote-as 200
+ neighbor 1.1.1.2 description "provider 2"
+ neighbor 3.3.3.2 remote-as 300
+ neighbor 3.3.3.2 description "provider 3"
+!
+line vty
+!
